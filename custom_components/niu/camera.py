@@ -38,13 +38,15 @@ async def async_setup_entry(hass, entry, async_add_entities) -> None:
         "name": camera_name,
         "still_image_url": "",
         "stream_source": None,
-        "authentication": "basic",
         "username": None,
         "password": None,
-        "limit_refetch_to_url_change": False,
         "content_type": "image/jpeg",
-        "framerate": 2,
-        "verify_ssl": True,
+        "advanced": {
+            "authentication": "basic",
+            "limit_refetch_to_url_change": False,
+            "framerate": 2,
+            "verify_ssl": True,
+        },
     }
     async_add_entities([LastTrackCamera(hass, api, entry, camera_name, camera_name)])
 
